@@ -1,0 +1,46 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local Stop = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+Frame.Position = UDim2.new(0.0669144988, 0, 0.491329491, 0)
+Frame.Size = UDim2.new(0, 209, 0, 298)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+TextLabel.Size = UDim2.new(0, 209, 0, 50)
+TextLabel.Font = Enum.Font.Garamond
+TextLabel.Text = "Sword Giver"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 29.000
+
+Stop.Name = "Stop"
+Stop.Parent = Frame
+Stop.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+Stop.Position = UDim2.new(0.220095694, 0, 0.483221471, 0)
+Stop.Size = UDim2.new(0, 116, 0, 110)
+Stop.Font = Enum.Font.Highway
+Stop.Text = "Get a Mystic Arcane!"
+Stop.TextColor3 = Color3.fromRGB(0, 0, 0)
+Stop.TextSize = 13.000
+Stop.MouseButton1Down:connect(function()
+	local args = {
+		[1] = "Buy",
+		[2] = 0,
+		[3] = "Mystic Arcane"
+	}
+
+	game:GetService("Players").LocalPlayer.RemoteFunctions.SwordShopSystem:FireServer(unpack(args))
+end)
